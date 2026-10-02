@@ -1,0 +1,366 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Journey of Jo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Special+Elite&family=Parisienne&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="paper"></div>
+    <div class="map-lines"></div>
+    <div class="grain"></div>
+
+    <!-- ========================= -->
+    <!-- OPENING -->
+    <!-- ========================= -->
+
+    <main id="opening" class="screen active">
+
+        <div class="invitation">
+
+            <div class="small-label">
+                PERSONAL ARCHIVE
+            </div>
+
+            <div class="archive-number">
+                FILE 03
+            </div>
+
+            <div class="seal">
+                J
+            </div>
+
+            <p class="classified">
+                PRIVATE • CONFIDENTIAL • FOR JO ONLY
+            </p>
+
+            <h1>
+                You have been<br>
+                <span>chosen.</span>
+            </h1>
+
+            <p class="invitation-text">
+                Jo, there is a place you have been selected
+                to visit.
+            </p>
+
+            <p class="mystery-text">
+                You weren't supposed to find this by accident.
+            </p>
+
+            <button class="main-button" onclick="openArchive()">
+                OPEN YOUR INVITATION
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- ========================= -->
+    <!-- ARCHIVE -->
+    <!-- ========================= -->
+
+    <main id="archive" class="screen">
+
+        <header class="archive-header">
+
+            <div>
+                <span class="small-label">
+                    PERSONAL ARCHIVE
+                </span>
+
+                <h2>
+                    THE JOURNEY OF JO
+                </h2>
+            </div>
+
+            <div class="progress-box">
+                <span id="progressCount">0</span>/4
+                PIECES FOUND
+            </div>
+
+        </header>
+
+
+        <section class="intro-note">
+
+            <p>
+                Four pieces of the archive have gone missing.
+            </p>
+
+            <p>
+                They are hidden inside memories.
+            </p>
+
+            <strong>
+                Find them.
+            </strong>
+
+        </section>
+
+
+        <!-- CASES -->
+
+        <section class="cases">
+
+            <button class="case-card locked" id="caseA" onclick="openCase('A')">
+
+                <span class="case-number">
+                    ARCHIVE 001
+                </span>
+
+                <span class="case-letter">
+                    A
+                </span>
+
+                <span class="case-title">
+                    THE ORIGIN STORY
+                </span>
+
+                <span class="case-status">
+                    INVESTIGATE
+                </span>
+
+            </button>
+
+
+            <button class="case-card locked" id="caseR" onclick="openCase('R')">
+
+                <span class="case-number">
+                    ARCHIVE 002
+                </span>
+
+                <span class="case-letter">
+                    R
+                </span>
+
+                <span class="case-title">
+                    THE RAINY SAMBUSA FILE
+                </span>
+
+                <span class="case-status">
+                    INVESTIGATE
+                </span>
+
+            </button>
+
+
+            <button class="case-card locked" id="caseS" onclick="openCase('S')">
+
+                <span class="case-number">
+                    ARCHIVE 003
+                </span>
+
+                <span class="case-letter">
+                    S
+                </span>
+
+                <span class="case-title">
+                    THE MYSTERY OF JO
+                </span>
+              <span class="case-status">
+                    INVESTIGATE
+                </span>
+
+            </button>
+
+
+            <button class="case-card locked" id="caseU" onclick="openCase('U')">
+
+                <span class="case-number">
+                    ARCHIVE 004
+                </span>
+
+                <span class="case-letter">
+                    U
+                </span>
+
+                <span class="case-title">
+                    THE GIRL BEHIND THE FILE
+                </span>
+
+                <span class="case-status">
+                    INVESTIGATE
+                </span>
+
+            </button>
+
+        </section>
+
+
+        <!-- ARSU REVEAL -->
+
+        <section id="arsuReveal" class="arsu-section hidden">
+
+            <div class="found-label">
+                FOUR PIECES RECOVERED
+            </div>
+
+            <div class="letters">
+
+                <div>A</div>
+                <div>R</div>
+                <div>S</div>
+                <div>U</div>
+
+            </div>
+
+            <p>
+                Something is missing.
+            </p>
+
+            <p>
+                What do these letters mean?
+            </p>
+
+            <input
+                id="arsuInput"
+                type="text"
+                maxlength="4"
+                placeholder="ENTER FOUR LETTERS"
+            >
+
+            <button class="main-button" onclick="checkARSU()">
+                UNLOCK
+            </button>
+
+            <p id="arsuMessage"></p>
+
+        </section>
+
+    </main>
+
+
+    <!-- ========================= -->
+    <!-- PASSPORT -->
+    <!-- ========================= -->
+
+    <main id="passportScreen" class="screen">
+
+        <div class="passport">
+
+            <div class="passport-top">
+                PERSONAL TRAVEL DOCUMENT
+            </div>
+
+            <div class="passport-emblem">
+                ✦
+            </div>
+
+            <h2>
+                PASSPORT
+            </h2>
+
+            <div class="passport-line"></div>
+
+            <p>
+                HOLDER
+            </p>
+
+            <strong>
+                JO
+            </strong>
+
+            <p>
+                DESTINATION
+            </p>
+
+            <div class="destination">
+                ARSU____
+            </div>
+
+            <div class="passport-stamp">
+                SELECTED
+            </div>
+
+            <p class="passport-note">
+                Four letters recovered.<br>
+                Destination incomplete.
+            </p>
+
+            <button class="main-button" onclick="finishDay3()">
+                CONTINUE
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- ========================= -->
+    <!-- DAY 3 END -->
+    <!-- ========================= -->
+
+    <main id="ending" class="screen">
+
+        <div class="ending-card">
+
+            <div class="small-label">
+                ARCHIVE STATUS
+            </div>
+
+            <div class="big-stamp">
+                DAY III
+                <br>
+                COMPLETE
+            </div>
+
+            <h2>
+                The map is still unfinished.
+            </h2>
+
+            <p>
+                You found the first part of the destination.
+            </p>
+
+            <p class="handwritten">
+                Somewhere beyond the map...
+                a place is waiting.
+            </p>
+
+            <div class="end-line"></div>
+
+            <p class="return-text">
+                Return when the next chapter opens.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- ========================= -->
+    <!-- CASE MODAL -->
+    <!-- ========================= -->
+
+    <div id="caseModal" class="modal">
+
+        <div class="modal-paper">
+
+            <button class="close-button" onclick="closeCase()">
+                ×
+            </button>
+
+            <div id="caseContent"></div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
