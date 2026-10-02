@@ -1,5 +1,5 @@
- /* =====================================
-   GENERAL
+/* =====================================
+   RESET & BASE STYLES
 ===================================== */
 
 * {
@@ -8,101 +8,43 @@
     padding: 0;
 }
 
-:root {
-    --cream: #e6d4ad;
-    --paper: #d8c294;
-    --dark: #17251d;
-    --green: #26382d;
-    --deep-green: #111c16;
-    --gold: #a98748;
-    --brown: #4a3625;
-    --ink: #2b251d;
-}
-
 body {
     min-height: 100vh;
-    color: var(--ink);
     font-family: "Cormorant Garamond", serif;
-    background: var(--deep-green);
+    color: #2b382d;
+    background-color: #dfd5c0;
     overflow-x: hidden;
 }
 
-
-/* =====================================
-   VINTAGE BACKGROUND
-===================================== */
-
+/* Background layers */
 .paper {
     position: fixed;
     inset: 0;
-    z-index: -5;
-
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(177, 143, 76, 0.18),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 80% 70%,
-            rgba(101, 74, 37, 0.25),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #15241b,
-            #25362a 45%,
-            #17231b
-        );
+    background: linear-gradient(rgba(235, 226, 206, 0.8), rgba(235, 226, 206, 0.8)),
+                url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat fixed;
+    z-index: -3;
 }
-
 
 .map-lines {
     position: fixed;
     inset: 0;
-    z-index: -4;
+    background: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat fixed;
     opacity: 0.15;
-
-    background-image:
-        linear-gradient(
-            25deg,
-            transparent 48%,
-            #b99b62 49%,
-            transparent 50%
-        ),
-        linear-gradient(
-            110deg,
-            transparent 48%,
-            #b99b62 49%,
-            transparent 50%
-        );
-
-    background-size: 170px 170px;
+    mix-blend-mode: multiply;
+    z-index: -2;
 }
-
 
 .grain {
     position: fixed;
     inset: 0;
-    z-index: -3;
-    pointer-events: none;
-
+    background: url('https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat fixed;
     opacity: 0.12;
-
-    background-image:
-        repeating-radial-gradient(
-            circle at 0 0,
-            transparent 0,
-            rgba(255,255,255,0.15) 1px,
-            transparent 2px
-        );
-
-    background-size: 5px 5px;
+    pointer-events: none;
+    z-index: -1;
 }
 
-
 /* =====================================
-   SCREENS
+   SCREENS DISPLAY MANAGEMENT
 ===================================== */
 
 .screen {
@@ -113,851 +55,440 @@ body {
 
 .screen.active {
     display: flex;
-}
-
-
-/* =====================================
-   OPENING
-===================================== */
-
-#opening {
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
+/* =====================================
+   OPENING INVITATION CARD
+===================================== */
 
 .invitation {
-    width: min(700px, 94%);
-    padding: 65px 50px;
-
+    max-width: 580px;
+    width: 100%;
+    padding: 50px 30px;
+    background: linear-gradient(rgba(244, 237, 221, 0.92), rgba(244, 237, 221, 0.92)),
+                url('https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=800&auto=format&fit=crop');
+    border: 1px solid #bba782;
     text-align: center;
-
-    background:
-        linear-gradient(
-            rgba(228, 211, 169, 0.96),
-            rgba(211, 190, 142, 0.96)
-        );
-
-    border: 1px solid #927342;
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,0.55),
-        inset 0 0 0 10px rgba(77,55,31,0.08);
-
+    box-shadow: 0 15px 35px rgba(45, 35, 20, 0.25);
     position: relative;
 }
-
-
-.invitation::before,
-.invitation::after {
-    content: "";
-    position: absolute;
-    width: 90px;
-    height: 90px;
-    border: 1px solid rgba(70,50,30,0.3);
-}
-
-
-.invitation::before {
-    top: 18px;
-    left: 18px;
-    border-right: none;
-    border-bottom: none;
-}
-
-
-.invitation::after {
-    right: 18px;
-    bottom: 18px;
-    border-left: none;
-    border-top: none;
-}
-
 
 .small-label {
     font-family: "Special Elite", monospace;
+    font-size: 10px;
     letter-spacing: 3px;
-    font-size: 12px;
+    color: #687360;
 }
-
 
 .archive-number {
-    margin-top: 12px;
     font-family: "Special Elite", monospace;
-    font-size: 12px;
-    opacity: 0.65;
+    font-size: 11px;
+    color: #8c7d62;
+    margin-top: 4px;
 }
 
-
 .seal {
-    width: 65px;
-    height: 65px;
-    margin: 28px auto;
-
+    width: 55px;
+    height: 55px;
+    margin: 20px auto;
+    border-radius: 50%;
+    background: #8b2626;
+    color: #f2e6ce;
+    font-family: "Parisienne", cursive;
+    font-size: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    border: 2px solid var(--gold);
-    border-radius: 50%;
-
-    font-family: "Parisienne", cursive;
-    font-size: 34px;
-
-    transform: rotate(-8deg);
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.4), 2px 4px 8px rgba(0,0,0,0.2);
 }
-
 
 .classified {
     font-family: "Special Elite", monospace;
-    font-size: 10px;
+    font-size: 8px;
     letter-spacing: 2px;
+    color: #933c3c;
+    margin-bottom: 20px;
 }
-
 
 .invitation h1 {
-    margin: 30px 0 20px;
-
-    font-size: clamp(45px, 8vw, 80px);
+    font-size: 46px;
     font-weight: 500;
-    line-height: 0.95;
+    line-height: 1.1;
+    color: #2b382d;
 }
-
 
 .invitation h1 span {
     font-family: "Parisienne", cursive;
-    color: #775c32;
+    font-size: 58px;
+    color: #55634d;
 }
-
 
 .invitation-text {
-    max-width: 430px;
-    margin: 0 auto 15px;
-    font-size: 22px;
+    font-size: 20px;
+    color: #524b3e;
+    margin: 20px 0 10px;
 }
-
 
 .mystery-text {
     font-style: italic;
-    opacity: 0.75;
-    margin-bottom: 35px;
+    font-size: 16px;
+    color: #786e5c;
+    margin-bottom: 25px;
 }
- /* =====================================
-   BUTTON
+
+/* =====================================
+   BUTTONS
 ===================================== */
 
 .main-button {
-    border: 1px solid #765b31;
-
-    padding: 15px 25px;
-
-    background: var(--green);
-    color: #e8d8b1;
-
+    display: inline-block;
+    padding: 14px 28px;
+    background: #2b382d;
+    color: #f0e6d2;
+    border: 1px solid #1a241b;
     font-family: "Special Elite", monospace;
-    font-size: 12px;
-    letter-spacing: 1px;
-
+    font-size: 11px;
+    letter-spacing: 2px;
     cursor: pointer;
-
-    transition: 0.25s;
+    transition: all 0.3s ease;
 }
-
 
 .main-button:hover {
-    transform: translateY(-3px);
-    background: #314837;
+    background: #425244;
+    color: #ffffff;
 }
 
-
 /* =====================================
-   ARCHIVE PAGE
+   ARCHIVE SCREEN
 ===================================== */
 
 #archive {
-    display: none;
-    flex-direction: column;
-    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
 }
-
-
-#archive.active {
-    display: flex;
-}
-
 
 .archive-header {
-    width: min(1100px, 95%);
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 35px;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #bba782;
+    padding-bottom: 15px;
 }
 
-
 .archive-header h2 {
-    font-size: clamp(35px, 6vw, 65px);
+    font-size: 32px;
     font-weight: 500;
 }
 
-
 .progress-box {
-    padding: 12px 18px;
-
-    border: 1px solid #927342;
-
-    background: rgba(224, 207, 167, 0.1);
-
-    color: #d9c598;
-
     font-family: "Special Elite", monospace;
     font-size: 11px;
+    background: rgba(220, 208, 185, 0.6);
+    padding: 8px 14px;
+    border: 1px solid #aa9975;
 }
-
 
 .intro-note {
-    width: min(650px, 94%);
-
-    margin-bottom: 40px;
-
-    padding: 25px;
-
-    background: #d9c496;
-
-    border: 1px solid #806335;
-
     text-align: center;
-
-    box-shadow: 8px 8px 0 rgba(0,0,0,0.25);
+    font-size: 20px;
+    margin-bottom: 35px;
+    color: #524b3e;
 }
-
-
-.intro-note p {
-    margin-bottom: 8px;
-    font-size: 19px;
-}
-
-
-/* =====================================
-   CASES
-===================================== */
 
 .cases {
-    width: min(1050px, 95%);
-
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    width: 100%;
 }
-
 
 .case-card {
-    min-height: 260px;
-
-    padding: 30px;
-
-    border: 1px solid #937441;
-
-    background:
-        linear-gradient(
-            145deg,
-            #dcca9e,
-            #bca574
-        );
-
-    color: var(--ink);
-
-    text-align: left;
-
-    position: relative;
-
+    background: linear-gradient(rgba(244, 237, 221, 0.9), rgba(244, 237, 221, 0.9)),
+                url('https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=400&auto=format&fit=crop');
+    border: 1px solid #bba782;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     cursor: pointer;
-
-    box-shadow:
-        8px 8px 0 rgba(0,0,0,0.25);
-
-    transition: 0.3s;
+    transition: transform 0.3s;
+    box-shadow: 3px 6px 15px rgba(0,0,0,0.08);
 }
-
 
 .case-card:hover {
-    transform: translateY(-6px) rotate(-0.5deg);
+    transform: translateY(-4px);
 }
-
 
 .case-number {
-    display: block;
-
-    font-family: "Special Elite", monospace;
-    font-size: 11px;
-
-    opacity: 0.7;
-}
-
-
-.case-letter {
-    display: block;
-
-    margin: 20px 0 5px;
-
-    font-family: "Parisienne", cursive;
-
-    font-size: 75px;
-
-    color: #765a31;
-}
-
-
-.case-title {
-    display: block;
-
-    font-family: "Special Elite", monospace;
-
-    font-size: 16px;
-}
-
-
-.case-status {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-
-    padding: 7px 10px;
-
-    border: 1px solid #765a31;
-
     font-family: "Special Elite", monospace;
     font-size: 9px;
+    color: #7d715b;
 }
 
-
-.case-card.found {
-    opacity: 0.55;
-    transform: none;
+.case-letter {
+    font-family: "Parisienne", cursive;
+    font-size: 48px;
+    color: #55634d;
+    margin: 5px 0;
 }
 
+.case-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #2b382d;
+    margin-bottom: 15px;
+}
+
+.case-status {
+    font-family: "Special Elite", monospace;
+    font-size: 10px;
+    color: #8c3b3b;
+    border-top: 1px dashed #aa9975;
+    padding-top: 10px;
+    width: 80%;
+}
 
 .case-card.found .case-status {
-    background: #26382d;
-    color: #ddcc9d;
+    color: #3b7044;
 }
 
-
-/* =====================================
-   ARSU
-===================================== */
+/* ARSU REVEAL SECTION */
 
 .arsu-section {
-    width: min(750px, 94%);
-
-    margin-top: 60px;
-
-    padding: 50px 25px;
-
+    margin-top: 50px;
+    padding: 40px;
+    background: rgba(244, 237, 221, 0.95);
+    border: 1px solid #bba782;
     text-align: center;
-
-    background: rgba(215,194,147,0.95);
-
-    border: 1px solid #8d6c39;
-
-    box-shadow: 10px 10px 0 rgba(0,0,0,0.3);
+    width: 100%;
 }
 
-
-.hidden {
-    display: none !important;
+.arsu-section.hidden {
+    display: none;
 }
-
 
 .found-label {
     font-family: "Special Elite", monospace;
-    font-size: 12px;
-    letter-spacing: 3px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #55634d;
 }
-
 
 .letters {
     display: flex;
     justify-content: center;
-    gap: 12px;
-
-    margin: 30px 0;
+    gap: 15px;
+    margin: 25px 0;
 }
-
 
 .letters div {
-    width: 70px;
-    height: 80px;
-
+    width: 50px;
+    height: 65px;
+    background: #ede3cb;
+    border: 1px solid #aa9975;
+    font-family: "Parisienne", cursive;
+    font-size: 38px;
     display: flex;
-    justify-content: center;
     align-items: center;
-
-    background: #26382d;
-    color: #e0c993;
-
-    font-family: "Special Elite", monospace;
-    font-size: 35px;
-
-    box-shadow: 5px 5px 0 rgba(0,0,0,0.25);
+    justify-content: center;
 }
 
-
-.arsu-section input {
-    display: block;
-
-    width: min(300px, 90%);
-
-    margin: 20px auto;
-
-    padding: 14px;
-
-    background: #eee0bd;
-
-    border: 1px solid #74572f;
-
+#arsuInput {
+    margin: 20px 0;
+    padding: 10px;
+    font-family: "Special Elite", monospace;
+    font-size: 18px;
     text-align: center;
-
-    font-family: "Special Elite", monospace;
-
-    outline: none;
+    letter-spacing: 6px;
+    border: 1px solid #aa9975;
+    background: #f7f2e6;
+    width: 200px;
 }
 
+/* =====================================
+   PASSPORT SCREEN
+===================================== */
 
-#arsuMessage {
-    margin-top: 15px;
-    font-family: "Special Elite", monospace;
+.passport {
+    max-width: 450px;
+    width: 100%;
+    padding: 40px;
+    background: linear-gradient(rgba(244, 237, 221, 0.95), rgba(244, 237, 221, 0.95)),
+                url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=800&auto=format&fit=crop');
+    border: 2px solid #aa9975;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    position: relative;
 }
- /* =====================================
-   MODAL
+
+.passport-top {
+    font-family: "Special Elite", monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.passport-emblem {
+    font-size: 30px;
+    margin: 15px 0;
+    color: #55634d;
+}
+
+.passport h2 {
+    font-size: 36px;
+    letter-spacing: 4px;
+}
+
+.passport-line {
+    width: 100px;
+    height: 1px;
+    background: #aa9975;
+    margin: 15px auto;
+}
+
+.destination {
+    font-family: "Special Elite", monospace;
+    font-size: 22px;
+    letter-spacing: 4px;
+    margin: 10px 0 20px;
+    color: #55634d;
+}
+
+.passport-stamp {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 80px;
+    height: 80px;
+    border: 2px solid #8c3b3b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Special Elite", monospace;
+    font-size: 9px;
+    color: #8c3b3b;
+    transform: rotate(-15deg);
+    opacity: 0.8;
+}
+
+/* =====================================
+   ENDING SCREEN
+===================================== */
+
+.ending-card {
+    max-width: 550px;
+    width: 100%;
+    padding: 50px 30px;
+    background: rgba(244, 237, 221, 0.95);
+    border: 1px solid #bba782;
+    text-align: center;
+}
+
+.big-stamp {
+    font-family: "Special Elite", monospace;
+    font-size: 16px;
+    color: #3b7044;
+    border: 2px solid #3b7044;
+    padding: 10px 20px;
+    display: inline-block;
+    margin: 20px 0;
+    transform: rotate(-3deg);
+}
+
+.handwritten {
+    font-family: "Parisienne", cursive;
+    font-size: 32px;
+    color: #55634d;
+    margin: 20px 0;
+}
+
+/* =====================================
+   MODAL POPUP
 ===================================== */
 
 .modal {
     display: none;
-
     position: fixed;
     inset: 0;
-
+    background: rgba(20, 25, 20, 0.82);
     z-index: 100;
-
-    padding: 25px;
-
-    background: rgba(7,12,9,0.82);
-
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
-
 
 .modal.open {
     display: flex;
 }
 
-
 .modal-paper {
-    width: min(850px, 95vw);
-    max-height: 90vh;
-    overflow-y: auto;
-
-    padding: 45px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #dfcca0,
-            #c7ad77
-        );
-
-    border: 1px solid #806335;
-
-    box-shadow: 0 30px 90px rgba(0,0,0,0.6);
-
     position: relative;
+    max-width: 580px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: linear-gradient(rgba(244, 237, 221, 0.96), rgba(244, 237, 221, 0.96)),
+                url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=800&auto=format&fit=crop');
+    border: 1px solid #bba782;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
-
 
 .close-button {
     position: absolute;
-    top: 15px;
-    right: 20px;
-
+    top: 10px;
+    right: 15px;
+    background: transparent;
     border: none;
-    background: none;
-
-    font-size: 30px;
-
+    font-size: 32px;
     cursor: pointer;
+    color: #524b3e;
 }
-
-
-.case-heading {
-    font-family: "Special Elite", monospace;
-
-    font-size: 13px;
-    letter-spacing: 2px;
-}
-
-
-.case-main-title {
-    margin: 10px 0 30px;
-
-    font-size: clamp(35px, 6vw, 60px);
-}
-
-
-.case-description {
-    font-size: 20px;
-    line-height: 1.5;
-    margin-bottom: 25px;
-}
-
-
-.puzzle-box {
-    padding: 25px;
-
-    background: rgba(255,255,255,0.22);
-
-    border: 1px dashed #806335;
-}
-
 
 .choice-list {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
+    margin-top: 15px;
 }
-
 
 .choice {
-    padding: 14px;
-
-    background: #d7c18f;
-
-    border: 1px solid #806335;
-
+    padding: 12px;
+    background: #e8deca;
+    border: 1px solid #bba782;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 18px;
     cursor: pointer;
-
-    text-align: left;
-
-    font-family: "Special Elite", monospace;
-
-    transition: 0.2s;
+    transition: background 0.2s;
 }
-
 
 .choice:hover {
-    background: #c3aa72;
+    background: #d9ccb4;
 }
-
-
-.choice.selected {
-    background: #26382d;
-    color: #dfcca0;
-}
-
-
-.photo-memory {
-    width: min(430px, 100%);
-
-    display: block;
-
-    margin: 25px auto;
-
-    border: 12px solid #e4d5ae;
-
-    box-shadow: 7px 7px 0 rgba(0,0,0,0.25);
-
-    transform: rotate(-1deg);
-}
-
-
-.memory-note {
-    padding: 20px;
-
-    background: #27392d;
-    color: #dfc996;
-
-    font-family: "Parisienne", cursive;
-    font-size: 27px;
-
-    text-align: center;
-}
-
 
 .object-grid {
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
-    gap: 15px;
-
-    margin: 25px 0;
+    gap: 12px;
+    margin-top: 15px;
 }
-
 
 .object {
-    min-height: 120px;
-
-    padding: 20px;
-
-    background: #26382d;
-    color: #e0cb98;
-
-    border: 1px solid #a08042;
-
+    padding: 15px 8px;
+    background: #e8deca;
+    border: 1px solid #bba782;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 16px;
     cursor: pointer;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    font-family: "Special Elite", monospace;
-
-    transition: 0.25s;
 }
-
 
 .object:hover {
-    transform: translateY(-4px);
-}
-
-
-.clue-output {
-    min-height: 60px;
-
-    padding: 15px;
-
-    margin-bottom: 20px;
-
-    border: 1px dashed #806335;
-
-    font-style: italic;
-}
-
-
-/* =====================================
-   PASSPORT
-===================================== */
-
-#passportScreen {
-    align-items: center;
-    justify-content: center;
-}
-
-
-.passport {
-    width: min(600px, 94%);
-
-    padding: 50px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #263d30,
-            #17271e
-        );
-
-    color: #dfcb98;
-
-    border: 2px solid #9d7d42;
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,0.6);
-
-    text-align: center;
-}
-
-
-.passport-top {
-    font-family: "Special Elite", monospace;
-
-    font-size: 10px;
-    letter-spacing: 3px;
-}
-
-
-.passport-emblem {
-    margin: 35px auto 10px;
-
-    width: 75px;
-    height: 75px;
-
-    border: 1px solid #b49351;
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 35px;
-}
-
-
-.passport h2 {
-    font-size: 48px;
-    font-weight: 400;
-}
-
-
-.passport-line {
-    height: 1px;
-    background: #9d7d42;
-    margin: 25px 0;
-}
-
-
-.passport p {
-    margin: 15px 0 5px;
-
-    font-family: "Special Elite", monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-}
-
-
-.passport strong {
-    font-size: 30px;
-}
-
-
-.destination {
-    margin: 20px 0;
-
-    font-family: "Special Elite", monospace;
-    font-size: 25px;
-    letter-spacing: 5px;
-}
-
-
-.passport-stamp {
-    width: 120px;
-
-    margin: 30px auto;
-
-    padding: 10px;
-
-    border: 2px solid #9e7939;
-
-    transform: rotate(-8deg);
-
-    font-family: "Special Elite", monospace;
- font-size: 12px;
-}
-
-
-.passport-note {
-    line-height: 1.6;
-}
-
-
-/* =====================================
-   END
-===================================== */
-
-#ending {
-    align-items: center;
-    justify-content: center;
-}
-
-
-.ending-card {
-    width: min(700px, 94%);
-
-    padding: 60px 35px;
-
-    background: #d9c496;
-
-    border: 1px solid #856535;
-
-    text-align: center;
-
-    box-shadow: 12px 12px 0 rgba(0,0,0,0.3);
-}
-
-
-.big-stamp {
-    width: 180px;
-
-    margin: 35px auto;
-
-    padding: 20px;
-
-    border: 3px solid #765b31;
-
-    transform: rotate(-5deg);
-
-    font-family: "Special Elite", monospace;
-}
-
-
-.ending-card h2 {
-    font-size: 42px;
-    font-weight: 500;
-}
-
-
-.ending-card p {
-    font-size: 20px;
-    margin: 15px 0;
-}
-
-
-.handwritten {
-    font-family: "Parisienne", cursive;
-    font-size: 30px !important;
-}
-
-
-.end-line {
-    width: 100px;
-    height: 1px;
-
-    margin: 30px auto;
-
-    background: #765b31;
-}
-
-
-.return-text {
-    font-family: "Special Elite", monospace;
-    font-size: 12px !important;
-    letter-spacing: 1px;
-}
-
-
-/* =====================================
-   MOBILE
-===================================== */
-
-@media (max-width: 700px) {
-
-    .invitation {
-        padding: 50px 25px;
-    }
-
-    .archive-header {
-        align-items: flex-start;
-        gap: 20px;
-        flex-direction: column;
-    }
-
-    .cases {
-        grid-template-columns: 1fr;
-    }
-
-    .letters div {
-        width: 55px;
-        height: 65px;
-    }
-
-    .object-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .modal-paper {
-        padding: 35px 20px;
-    }
-
+    background: #d9ccb4;
 }
