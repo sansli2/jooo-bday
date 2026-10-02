@@ -1,0 +1,963 @@
+ /* =====================================
+   GENERAL
+===================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --cream: #e6d4ad;
+    --paper: #d8c294;
+    --dark: #17251d;
+    --green: #26382d;
+    --deep-green: #111c16;
+    --gold: #a98748;
+    --brown: #4a3625;
+    --ink: #2b251d;
+}
+
+body {
+    min-height: 100vh;
+    color: var(--ink);
+    font-family: "Cormorant Garamond", serif;
+    background: var(--deep-green);
+    overflow-x: hidden;
+}
+
+
+/* =====================================
+   VINTAGE BACKGROUND
+===================================== */
+
+.paper {
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(177, 143, 76, 0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(101, 74, 37, 0.25),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #15241b,
+            #25362a 45%,
+            #17231b
+        );
+}
+
+
+.map-lines {
+    position: fixed;
+    inset: 0;
+    z-index: -4;
+    opacity: 0.15;
+
+    background-image:
+        linear-gradient(
+            25deg,
+            transparent 48%,
+            #b99b62 49%,
+            transparent 50%
+        ),
+        linear-gradient(
+            110deg,
+            transparent 48%,
+            #b99b62 49%,
+            transparent 50%
+        );
+
+    background-size: 170px 170px;
+}
+
+
+.grain {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    pointer-events: none;
+
+    opacity: 0.12;
+
+    background-image:
+        repeating-radial-gradient(
+            circle at 0 0,
+            transparent 0,
+            rgba(255,255,255,0.15) 1px,
+            transparent 2px
+        );
+
+    background-size: 5px 5px;
+}
+
+
+/* =====================================
+   SCREENS
+===================================== */
+
+.screen {
+    display: none;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.screen.active {
+    display: flex;
+}
+
+
+/* =====================================
+   OPENING
+===================================== */
+
+#opening {
+    align-items: center;
+    justify-content: center;
+}
+
+
+.invitation {
+    width: min(700px, 94%);
+    padding: 65px 50px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            rgba(228, 211, 169, 0.96),
+            rgba(211, 190, 142, 0.96)
+        );
+
+    border: 1px solid #927342;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.55),
+        inset 0 0 0 10px rgba(77,55,31,0.08);
+
+    position: relative;
+}
+
+
+.invitation::before,
+.invitation::after {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border: 1px solid rgba(70,50,30,0.3);
+}
+
+
+.invitation::before {
+    top: 18px;
+    left: 18px;
+    border-right: none;
+    border-bottom: none;
+}
+
+
+.invitation::after {
+    right: 18px;
+    bottom: 18px;
+    border-left: none;
+    border-top: none;
+}
+
+
+.small-label {
+    font-family: "Special Elite", monospace;
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+
+.archive-number {
+    margin-top: 12px;
+    font-family: "Special Elite", monospace;
+    font-size: 12px;
+    opacity: 0.65;
+}
+
+
+.seal {
+    width: 65px;
+    height: 65px;
+    margin: 28px auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+
+    font-family: "Parisienne", cursive;
+    font-size: 34px;
+
+    transform: rotate(-8deg);
+}
+
+
+.classified {
+    font-family: "Special Elite", monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+
+.invitation h1 {
+    margin: 30px 0 20px;
+
+    font-size: clamp(45px, 8vw, 80px);
+    font-weight: 500;
+    line-height: 0.95;
+}
+
+
+.invitation h1 span {
+    font-family: "Parisienne", cursive;
+    color: #775c32;
+}
+
+
+.invitation-text {
+    max-width: 430px;
+    margin: 0 auto 15px;
+    font-size: 22px;
+}
+
+
+.mystery-text {
+    font-style: italic;
+    opacity: 0.75;
+    margin-bottom: 35px;
+}
+ /* =====================================
+   BUTTON
+===================================== */
+
+.main-button {
+    border: 1px solid #765b31;
+
+    padding: 15px 25px;
+
+    background: var(--green);
+    color: #e8d8b1;
+
+    font-family: "Special Elite", monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+
+.main-button:hover {
+    transform: translateY(-3px);
+    background: #314837;
+}
+
+
+/* =====================================
+   ARCHIVE PAGE
+===================================== */
+
+#archive {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#archive.active {
+    display: flex;
+}
+
+
+.archive-header {
+    width: min(1100px, 95%);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 35px;
+}
+
+
+.archive-header h2 {
+    font-size: clamp(35px, 6vw, 65px);
+    font-weight: 500;
+}
+
+
+.progress-box {
+    padding: 12px 18px;
+
+    border: 1px solid #927342;
+
+    background: rgba(224, 207, 167, 0.1);
+
+    color: #d9c598;
+
+    font-family: "Special Elite", monospace;
+    font-size: 11px;
+}
+
+
+.intro-note {
+    width: min(650px, 94%);
+
+    margin-bottom: 40px;
+
+    padding: 25px;
+
+    background: #d9c496;
+
+    border: 1px solid #806335;
+
+    text-align: center;
+
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.25);
+}
+
+
+.intro-note p {
+    margin-bottom: 8px;
+    font-size: 19px;
+}
+
+
+/* =====================================
+   CASES
+===================================== */
+
+.cases {
+    width: min(1050px, 95%);
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+
+.case-card {
+    min-height: 260px;
+
+    padding: 30px;
+
+    border: 1px solid #937441;
+
+    background:
+        linear-gradient(
+            145deg,
+            #dcca9e,
+            #bca574
+        );
+
+    color: var(--ink);
+
+    text-align: left;
+
+    position: relative;
+
+    cursor: pointer;
+
+    box-shadow:
+        8px 8px 0 rgba(0,0,0,0.25);
+
+    transition: 0.3s;
+}
+
+
+.case-card:hover {
+    transform: translateY(-6px) rotate(-0.5deg);
+}
+
+
+.case-number {
+    display: block;
+
+    font-family: "Special Elite", monospace;
+    font-size: 11px;
+
+    opacity: 0.7;
+}
+
+
+.case-letter {
+    display: block;
+
+    margin: 20px 0 5px;
+
+    font-family: "Parisienne", cursive;
+
+    font-size: 75px;
+
+    color: #765a31;
+}
+
+
+.case-title {
+    display: block;
+
+    font-family: "Special Elite", monospace;
+
+    font-size: 16px;
+}
+
+
+.case-status {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+
+    padding: 7px 10px;
+
+    border: 1px solid #765a31;
+
+    font-family: "Special Elite", monospace;
+    font-size: 9px;
+}
+
+
+.case-card.found {
+    opacity: 0.55;
+    transform: none;
+}
+
+
+.case-card.found .case-status {
+    background: #26382d;
+    color: #ddcc9d;
+}
+
+
+/* =====================================
+   ARSU
+===================================== */
+
+.arsu-section {
+    width: min(750px, 94%);
+
+    margin-top: 60px;
+
+    padding: 50px 25px;
+
+    text-align: center;
+
+    background: rgba(215,194,147,0.95);
+
+    border: 1px solid #8d6c39;
+
+    box-shadow: 10px 10px 0 rgba(0,0,0,0.3);
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+
+.found-label {
+    font-family: "Special Elite", monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+
+.letters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+
+    margin: 30px 0;
+}
+
+
+.letters div {
+    width: 70px;
+    height: 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #26382d;
+    color: #e0c993;
+
+    font-family: "Special Elite", monospace;
+    font-size: 35px;
+
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.25);
+}
+
+
+.arsu-section input {
+    display: block;
+
+    width: min(300px, 90%);
+
+    margin: 20px auto;
+
+    padding: 14px;
+
+    background: #eee0bd;
+
+    border: 1px solid #74572f;
+
+    text-align: center;
+
+    font-family: "Special Elite", monospace;
+
+    outline: none;
+}
+
+
+#arsuMessage {
+    margin-top: 15px;
+    font-family: "Special Elite", monospace;
+}
+ /* =====================================
+   MODAL
+===================================== */
+
+.modal {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    z-index: 100;
+
+    padding: 25px;
+
+    background: rgba(7,12,9,0.82);
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.modal.open {
+    display: flex;
+}
+
+
+.modal-paper {
+    width: min(850px, 95vw);
+    max-height: 90vh;
+    overflow-y: auto;
+
+    padding: 45px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #dfcca0,
+            #c7ad77
+        );
+
+    border: 1px solid #806335;
+
+    box-shadow: 0 30px 90px rgba(0,0,0,0.6);
+
+    position: relative;
+}
+
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+
+    border: none;
+    background: none;
+
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
+
+.case-heading {
+    font-family: "Special Elite", monospace;
+
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+
+.case-main-title {
+    margin: 10px 0 30px;
+
+    font-size: clamp(35px, 6vw, 60px);
+}
+
+
+.case-description {
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+
+.puzzle-box {
+    padding: 25px;
+
+    background: rgba(255,255,255,0.22);
+
+    border: 1px dashed #806335;
+}
+
+
+.choice-list {
+    display: grid;
+    gap: 10px;
+}
+
+
+.choice {
+    padding: 14px;
+
+    background: #d7c18f;
+
+    border: 1px solid #806335;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    font-family: "Special Elite", monospace;
+
+    transition: 0.2s;
+}
+
+
+.choice:hover {
+    background: #c3aa72;
+}
+
+
+.choice.selected {
+    background: #26382d;
+    color: #dfcca0;
+}
+
+
+.photo-memory {
+    width: min(430px, 100%);
+
+    display: block;
+
+    margin: 25px auto;
+
+    border: 12px solid #e4d5ae;
+
+    box-shadow: 7px 7px 0 rgba(0,0,0,0.25);
+
+    transform: rotate(-1deg);
+}
+
+
+.memory-note {
+    padding: 20px;
+
+    background: #27392d;
+    color: #dfc996;
+
+    font-family: "Parisienne", cursive;
+    font-size: 27px;
+
+    text-align: center;
+}
+
+
+.object-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin: 25px 0;
+}
+
+
+.object {
+    min-height: 120px;
+
+    padding: 20px;
+
+    background: #26382d;
+    color: #e0cb98;
+
+    border: 1px solid #a08042;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    font-family: "Special Elite", monospace;
+
+    transition: 0.25s;
+}
+
+
+.object:hover {
+    transform: translateY(-4px);
+}
+
+
+.clue-output {
+    min-height: 60px;
+
+    padding: 15px;
+
+    margin-bottom: 20px;
+
+    border: 1px dashed #806335;
+
+    font-style: italic;
+}
+
+
+/* =====================================
+   PASSPORT
+===================================== */
+
+#passportScreen {
+    align-items: center;
+    justify-content: center;
+}
+
+
+.passport {
+    width: min(600px, 94%);
+
+    padding: 50px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #263d30,
+            #17271e
+        );
+
+    color: #dfcb98;
+
+    border: 2px solid #9d7d42;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.6);
+
+    text-align: center;
+}
+
+
+.passport-top {
+    font-family: "Special Elite", monospace;
+
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+
+.passport-emblem {
+    margin: 35px auto 10px;
+
+    width: 75px;
+    height: 75px;
+
+    border: 1px solid #b49351;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 35px;
+}
+
+
+.passport h2 {
+    font-size: 48px;
+    font-weight: 400;
+}
+
+
+.passport-line {
+    height: 1px;
+    background: #9d7d42;
+    margin: 25px 0;
+}
+
+
+.passport p {
+    margin: 15px 0 5px;
+
+    font-family: "Special Elite", monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+
+.passport strong {
+    font-size: 30px;
+}
+
+
+.destination {
+    margin: 20px 0;
+
+    font-family: "Special Elite", monospace;
+    font-size: 25px;
+    letter-spacing: 5px;
+}
+
+
+.passport-stamp {
+    width: 120px;
+
+    margin: 30px auto;
+
+    padding: 10px;
+
+    border: 2px solid #9e7939;
+
+    transform: rotate(-8deg);
+
+    font-family: "Special Elite", monospace;
+ font-size: 12px;
+}
+
+
+.passport-note {
+    line-height: 1.6;
+}
+
+
+/* =====================================
+   END
+===================================== */
+
+#ending {
+    align-items: center;
+    justify-content: center;
+}
+
+
+.ending-card {
+    width: min(700px, 94%);
+
+    padding: 60px 35px;
+
+    background: #d9c496;
+
+    border: 1px solid #856535;
+
+    text-align: center;
+
+    box-shadow: 12px 12px 0 rgba(0,0,0,0.3);
+}
+
+
+.big-stamp {
+    width: 180px;
+
+    margin: 35px auto;
+
+    padding: 20px;
+
+    border: 3px solid #765b31;
+
+    transform: rotate(-5deg);
+
+    font-family: "Special Elite", monospace;
+}
+
+
+.ending-card h2 {
+    font-size: 42px;
+    font-weight: 500;
+}
+
+
+.ending-card p {
+    font-size: 20px;
+    margin: 15px 0;
+}
+
+
+.handwritten {
+    font-family: "Parisienne", cursive;
+    font-size: 30px !important;
+}
+
+
+.end-line {
+    width: 100px;
+    height: 1px;
+
+    margin: 30px auto;
+
+    background: #765b31;
+}
+
+
+.return-text {
+    font-family: "Special Elite", monospace;
+    font-size: 12px !important;
+    letter-spacing: 1px;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 700px) {
+
+    .invitation {
+        padding: 50px 25px;
+    }
+
+    .archive-header {
+        align-items: flex-start;
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    .cases {
+        grid-template-columns: 1fr;
+    }
+
+    .letters div {
+        width: 55px;
+        height: 65px;
+    }
+
+    .object-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .modal-paper {
+        padding: 35px 20px;
+    }
+
+}
