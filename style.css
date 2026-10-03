@@ -1,6 +1,6 @@
-/* =====================================
-   RESET & BASE STYLES
-===================================== */
+/* =========================================
+   ARSU — VINTAGE EXPLORER ARCHIVE
+========================================= */
 
 * {
     box-sizing: border-box;
@@ -8,494 +8,536 @@
     padding: 0;
 }
 
+:root {
+    --dark-green: #1d3027;
+    --deep-green: #14231d;
+    --gold: #b08a45;
+    --cream: #eee2c7;
+    --paper: #e8d8b5;
+    --ink: #29251c;
+    --brown: #604a30;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     min-height: 100vh;
-    font-family: "Cormorant Garamond", serif;
-    color: #f0e6d2;
-    background-color: #2B1B17;
-    overflow-x: hidden;
+    background:
+        radial-gradient(circle at center, rgba(255,255,255,.08), transparent 45%),
+        linear-gradient(135deg, #182820, #26392e 50%, #101b17);
+    color: var(--cream);
+    font-family: Georgia, "Times New Roman", serif;
 }
 
-/* Background image using your local file */
-.paper {
-    position: fixed;
-    inset: 0;
-    background: url('image.pg') center/cover no-repeat fixed;
-    z-index: -3;
-}
-
-.map-lines {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    pointer-events: none;
-    z-index: -2;
-}
-
-.grain {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-}
-
-/* =====================================
-   SCREENS DISPLAY MANAGEMENT
-===================================== */
+/* =========================================
+   GENERAL
+========================================= */
 
 .screen {
-    display: none;
     min-height: 100vh;
-    padding: 40px 20px;
+    width: 100%;
 }
 
-.screen.active {
+.hidden {
+    display: none !important;
+}
+
+button {
+    font-family: Georgia, "Times New Roman", serif;
+    cursor: pointer;
+}
+
+/* =========================================
+   OPENING
+========================================= */
+
+#opening {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(rgba(15, 29, 23, .72), rgba(15, 29, 23, .82)),
+        url("images/explorer-map.jpg") center/cover;
 }
 
-/* =====================================
-   OPENING INVITATION CARD
-===================================== */
+#opening::before {
+    content: "";
+    position: absolute;
+    inset: 25px;
+    border: 1px solid rgba(176, 138, 69, .45);
+    pointer-events: none;
+}
 
-.invitation {
-    max-width: 580px;
-    width: 100%;
-    padding: 50px 30px;
-    background: rgba(43, 27, 23, 0.88);
-    border: 2px solid #FFD700;
+.opening-content {
+    width: min(90%, 700px);
     text-align: center;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    padding: 70px 30px;
     position: relative;
-    color: #f0e6d2;
+    z-index: 2;
 }
 
 .small-label {
-    font-family: "Special Elite", monospace;
-    font-size: 10px;
+    color: var(--gold);
+    font-size: .75rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+}
+
+.opening-content h1 {
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: normal;
+    line-height: 1;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 15px rgba(0,0,0,.6);
+    margin-bottom: 30px;
+}
+
+.opening-text {
+    max-width: 520px;
+    margin: 0 auto 40px;
+    color: #dfd3b9;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+#beginBtn,
+.continue-btn,
+#revealArsu,
+#openPassport {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 14px 25px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: .3s ease;
+}
+
+#beginBtn:hover,
+.continue-btn:hover,
+#revealArsu:hover,
+#openPassport:hover {
+    background: var(--gold);
+    color: var(--deep-green);
+    transform: translateY(-2px);
+}
+
+.archive-stamp {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    border: 2px solid rgba(176, 138, 69, .7);
+    color: rgba(176, 138, 69, .8);
+    padding: 8px 15px;
+    transform: rotate(9deg);
     letter-spacing: 3px;
-    color: #FFD700;
+    font-size: .7rem;
 }
 
-.archive-number {
-    font-family: "Special Elite", monospace;
-    font-size: 11px;
-    color: #d4af37;
-    margin-top: 4px;
-}
-
-.seal {
-    width: 55px;
-    height: 55px;
-    margin: 20px auto;
-    border-radius: 50%;
-    background: #8b2626;
-    color: #FFD700;
-    font-family: "Parisienne", cursive;
-    font-size: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: inset 0 0 8px rgba(0,0,0,0.6), 2px 4px 8px rgba(0,0,0,0.4);
-    border: 1px solid #FFD700;
-}
-
-.classified {
-    font-family: "Special Elite", monospace;
-    font-size: 8px;
-    letter-spacing: 2px;
-    color: #e66b6b;
-    margin-bottom: 20px;
-}
-
-.invitation h1 {
-    font-size: 46px;
-    font-weight: 500;
-    line-height: 1.1;
-    color: #ffffff;
-}
-
-.invitation h1 span {
-    font-family: "Parisienne", cursive;
-    font-size: 58px;
-    color: #FFD700;
-}
-
-.invitation-text {
-    font-size: 20px;
-    color: #e0d0b8;
-    margin: 20px 0 10px;
-}
-
-.mystery-text {
-    font-style: italic;
-    font-size: 16px;
-    color: #c5b59a;
-    margin-bottom: 25px;
-}
-
-/* =====================================
-   BUTTONS
-===================================== */
-
-.main-button {
-    display: inline-block;
-    padding: 14px 28px;
-    background: #FFD700;
-    color: #2B1B17;
-    border: 1px solid #d4af37;
-    font-family: "Special Elite", monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.main-button:hover {
-    background: #ffffff;
-    color: #2B1B17;
-}
-
-/* =====================================
-   ARCHIVE SCREEN
-===================================== */
+/* =========================================
+   ARCHIVE
+========================================= */
 
 #archive {
-    max-width: 800px;
-    margin: 0 auto;
-    color: #f0e6d2;
+    min-height: 100vh;
+    padding: 35px 20px 80px;
+
+    background:
+        linear-gradient(rgba(19, 35, 28, .76), rgba(19, 35, 28, .86)),
+        url("images/explorer-map.jpg") center/cover fixed;
 }
 
 .archive-header {
-    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto 50px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(176, 138, 69, .5);
+
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    border-bottom: 1px solid #FFD700;
-    padding-bottom: 15px;
+    align-items: end;
 }
 
 .archive-header h2 {
-    font-size: 32px;
-    font-weight: 500;
-    color: #FFD700;
+    font-size: 2rem;
+    font-weight: normal;
+    letter-spacing: 4px;
 }
 
-.progress-box {
-    font-family: "Special Elite", monospace;
-    font-size: 11px;
-    background: rgba(43, 27, 23, 0.9);
-    color: #FFD700;
-    padding: 8px 14px;
-    border: 1px solid #FFD700;
+.archive-number {
+    color: var(--gold);
+    letter-spacing: 2px;
+    font-size: .8rem;
 }
 
-.intro-note {
-    text-align: center;
-    font-size: 20px;
-    margin-bottom: 35px;
-    color: #e0d0b8;
-}
+/* =========================================
+   PAPER DOCUMENT
+========================================= */
 
-.cases {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
+.archive-section {
     width: 100%;
+    max-width: 850px;
+    margin: 0 auto 60px;
+    animation: paperAppear .7s ease;
 }
 
-.case-card {
-    background: rgba(43, 27, 23, 0.85);
-    border: 1px solid #FFD700;
-    padding: 30px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.paper {
+    position: relative;
+    color: var(--ink);
+    padding: 55px clamp(25px, 6vw, 70px);
+    background:
+        radial-gradient(circle at 20% 20%, rgba(90,60,20,.08), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(90,60,20,.08), transparent 35%),
+        var(--paper);
+box-shadow:
+        0 20px 50px rgba(0,0,0,.35),
+        inset 0 0 50px rgba(70,45,20,.08);
+
+    border: 1px solid rgba(96,74,48,.5);
+}
+
+.paper::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(96,74,48,.25);
+    pointer-events: none;
+}
+
+.document-label {
+    display: inline-block;
+    color: var(--brown);
+    border: 1px solid var(--brown);
+    padding: 5px 10px;
+    font-size: .65rem;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+.paper h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: normal;
+    margin-bottom: 25px;
+    color: #2d271c;
+}
+
+.paper p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+
+.continue-btn {
+    margin-top: 25px;
+    color: var(--brown);
+    border-color: var(--brown);
+}
+
+.continue-btn:hover {
+    background: var(--brown);
+    color: var(--paper);
+}
+
+/* =========================================
+   MEMORY ENTRIES
+========================================= */
+
+.memory-entry {
+    border-left: 2px solid var(--gold);
+    padding: 15px 20px;
+    margin: 30px 0;
+}
+
+.memory-entry h3 {
+    color: var(--brown);
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.memory-entry p {
+    margin-bottom: 0;
+}
+
+/* =========================================
+   IMAGES
+========================================= */
+
+.memory-image {
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto;
+    border: 8px solid #d7c59d;
+    box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    transform: rotate(-1deg);
+}
+
+.memory-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.small-image {
+    max-width: 300px;
+}
+
+/* =========================================
+   HANDWRITTEN NOTE
+========================================= */
+
+.handwritten-note {
+    max-width: 500px;
+    margin: 25px auto;
+    padding: 25px;
+    background: rgba(176,138,69,.15);
+    border-left: 3px solid var(--gold);
+    font-family: "Brush Script MT", "Segoe Script", cursive;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    transform: rotate(1deg);
+}
+
+/* =========================================
+   JOURNEY
+========================================= */
+
+.journey-path {
+    margin: 35px auto;
+    max-width: 350px;
     text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s;
-    box-shadow: 3px 6px 15px rgba(0,0,0,0.4);
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    color: var(--brown);
 }
 
-.case-card:hover {
-    transform: translateY(-4px);
-}
-
-.case-number {
-    font-family: "Special Elite", monospace;
-    font-size: 9px;
-    color: #d4af37;
-}
-
-.case-letter {
-    font-family: "Parisienne", cursive;
-    font-size: 48px;
-    color: #FFD700;
+.journey-path div {
+    padding: 12px;
+    border: 1px solid rgba(96,74,48,.35);
     margin: 5px 0;
 }
 
-.case-title {
-    font-size: 22px;
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 15px;
+.journey-path span {
+    display: block;
+    color: var(--gold);
 }
 
-.case-status {
-    font-family: "Special Elite", monospace;
-    font-size: 10px;
-    color: #e66b6b;
-    border-top: 1px dashed #FFD700;
-    padding-top: 10px;
-    width: 80%;
-}
+/* =========================================
+   INTERESTS
+========================================= */
 
-.case-card.found .case-status {
-    color: #55ff77;
-}
-
-/* ARSU REVEAL SECTION */
-
-.arsu-section {
-    margin-top: 50px;
-    padding: 40px;
-    background: rgba(43, 27, 23, 0.95);
-    border: 2px solid #FFD700;
+.interest-note {
+    margin: 30px 0;
+    padding: 25px;
+    border: 1px dashed var(--brown);
     text-align: center;
-    width: 100%;
 }
 
-.arsu-section.hidden {
-    display: none;
-}
-
-.found-label {
-    font-family: "Special Elite", monospace;
-    font-size: 10px;
+.interest-note p {
+    display: inline-block;
+    margin: 7px 12px;
+    color: var(--brown);
+    font-size: .85rem;
     letter-spacing: 2px;
-    color: #FFD700;
+}
+
+/* =========================================
+   FINAL NOTE
+========================================= */
+
+.final-note {
+    margin: 35px 0;
+    padding: 30px;
+    background: rgba(96,74,48,.08);
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.9;
+    font-style: italic;
+}
+
+/* =========================================
+   ARSU DISCOVERY
+========================================= */
+
+.discovery {
+    text-align: center;
 }
 
 .letters {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin: 25px 0;
+    gap: 18px;
+    margin: 40px 0;
 }
 
-.letters div {
-    width: 50px;
+.letters span {
+    width: 65px;
     height: 65px;
-    background: #1a0f0d;
-    border: 1px solid #FFD700;
-    font-family: "Parisienne", cursive;
-    font-size: 38px;
-    color: #FFD700;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    border: 1px solid var(--brown);
+    font-size: 2rem;
+    color: var(--brown);
+    background: rgba(255,255,255,.12);
 }
 
-#arsuInput {
-    margin: 20px 0;
-    padding: 10px;
-    font-family: "Special Elite", monospace;
-    font-size: 18px;
+.arsu-title {
     text-align: center;
-    letter-spacing: 6px;
-    border: 1px solid #FFD700;
-    background: #1a0f0d;
-    color: #ffffff;
-    width: 200px;
+    font-size: clamp(4rem, 12vw, 8rem) !important;
+    letter-spacing: 15px;
+    color: var(--brown) !important;
 }
 
-/* =====================================
-   PASSPORT SCREEN
-===================================== */
+/* =========================================
+   PASSPORT
+========================================= */
 
 .passport {
-    max-width: 450px;
-    width: 100%;
-    padding: 40px;
-    background: rgba(43, 27, 23, 0.95);
-    border: 2px solid #FFD700;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 35px;
+background: #403326;
+    border: 4px solid #7f6237;
+    box-shadow: 0 25px 60px rgba(0,0,0,.45);
+
     position: relative;
-    color: #f0e6d2;
 }
 
-.passport-top {
-    font-family: "Special Elite", monospace;
-    font-size: 9px;
+.passport-header {
+    display: flex;
+    justify-content: space-between;
+    color: #c7a76b;
+    letter-spacing: 3px;
+    border-bottom: 1px solid #8b7045;
+    padding-bottom: 15px;
+}
+
+.passport-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.passport-body img {
+    width: 100%;
+    display: block;
+    opacity: .9;
+}
+
+.passport-info {
+    color: #ddcda9;
+}
+
+.passport-info p {
+    margin: 10px 0 25px;
     letter-spacing: 2px;
-    color: #FFD700;
 }
 
-.passport-emblem {
-    font-size: 30px;
-    margin: 15px 0;
-    color: #FFD700;
-}
-
-.passport h2 {
-    font-size: 36px;
-    letter-spacing: 4px;
-    color: #ffffff;
-}
-
-.passport-line {
-    width: 100px;
-    height: 1px;
-    background: #FFD700;
-    margin: 15px auto;
-}
-
-.destination {
-    font-family: "Special Elite", monospace;
-    font-size: 22px;
-    letter-spacing: 4px;
-    margin: 10px 0 20px;
-    color: #FFD700;
+.passport-info h2 {
+    color: #d1b16c;
+    font-size: 2rem;
+    margin-bottom: 25px;
 }
 
 .passport-stamp {
     position: absolute;
+    right: 35px;
     bottom: 30px;
-    right: 30px;
-    width: 80px;
-    height: 80px;
-    border: 2px solid #e66b6b;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "Special Elite", monospace;
-    font-size: 9px;
-    color: #e66b6b;
-    transform: rotate(-15deg);
-    opacity: 0.8;
+
+    color: #b38b4a;
+    border: 3px solid #b38b4a;
+    padding: 12px 18px;
+    transform: rotate(-12deg);
+    letter-spacing: 3px;
+    opacity: .8;
 }
 
-/* =====================================
-   ENDING SCREEN
-===================================== */
-
-.ending-card {
+.ending-text {
+    text-align: center;
     max-width: 550px;
-    width: 100%;
-    padding: 50px 30px;
-    background: rgba(43, 27, 23, 0.95);
-    border: 2px solid #FFD700;
-    text-align: center;
-    color: #f0e6d2;
+    margin: 35px auto;
+    color: #d8c9aa;
+    font-style: italic;
+    line-height: 1.8;
 }
 
-.big-stamp {
-    font-family: "Special Elite", monospace;
-    font-size: 16px;
-    color: #55ff77;
-    border: 2px solid #55ff77;
-    padding: 10px 20px;
-    display: inline-block;
-    margin: 20px 0;
-    transform: rotate(-3deg);
+/* =========================================
+   ANIMATION
+========================================= */
+
+@keyframes paperAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.handwritten {
-    font-family: "Parisienne", cursive;
-    font-size: 32px;
-    color: #FFD700;
-    margin: 20px 0;
-}
+/* =========================================
+   MOBILE
+========================================= */
 
-/* =====================================
-   MODAL POPUP
-===================================== */
+@media (max-width: 650px) {
 
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
+    .archive-stamp {
+        top: 20px;
+        right: 20px;
+        font-size: .55rem;
+    }
 
-.modal.open {
-    display: flex;
-}
+    .opening-content {
+        padding: 50px 20px;
+    }
 
-.modal-paper {
-    position: relative;
-    max-width: 580px;
-    width: 100%;
-    max-height: 85vh;
-    overflow-y: auto;
-    background: rgba(43, 27, 23, 0.98);
-    border: 2px solid #FFD700;
-    padding: 40px 30px;
-    text-align: center;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-    color: #f0e6d2;
-}
+    .opening-content h1 {
+        font-size: 3.2rem;
+    }
 
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background: transparent;
-    border: none;
-    font-size: 32px;
-    cursor: pointer;
-    color: #FFD700;
-}
+    .archive-header {
+        align-items: flex-start;
+        gap: 20px;
+    }
 
-.choice-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 15px;
-}
+    .archive-number {
+        font-size: .65rem;
+    }
 
-.choice {
-    padding: 12px;
-    background: #1a0f0d;
-    border: 1px solid #FFD700;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 18px;
-    color: #ffffff;
-    cursor: pointer;
-    transition: background 0.2s;
-}
+    .paper {
+        padding: 45px 25px;
+    }
 
-.choice:hover {
-    background: #3d2721;
-}
+    .passport-body {
+        grid-template-columns: 1fr;
+    }
 
-.object-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-top: 15px;
-}
+    .passport-stamp {
+        position: static;
+        display: inline-block;
+        margin-top: 25px;
+    }
 
-.object {
-    padding: 15px 8px;
-    background: #1a0f0d;
-    border: 1px solid #FFD700;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 16px;
-    color: #ffffff;
-    cursor: pointer;
-}
+    .letters {
+        gap: 8px;
+    }
 
-.object:hover {
-    background: #3d2721;
+    .letters span {
+        width: 55px;
+        height: 55px;
+    }
 }
