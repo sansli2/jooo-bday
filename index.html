@@ -1,365 +1,478 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>The Journey of Jo</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Special+Elite&family=Parisienne&display=swap" rel="stylesheet">
+    <title>ARSU — The Archive</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- BACKGROUND -->
-    <div class="paper"></div>
-    <div class="map-lines"></div>
-    <div class="grain"></div>
-
-    <!-- ========================= -->
-    <!-- OPENING -->
-    <!-- ========================= -->
+    <!-- =========================================
+         OPENING — "YOU HAVE BEEN CHOSEN"
+    ========================================== -->
 
     <main id="opening" class="screen active">
 
-        <div class="invitation">
+        <div class="archive-stamp">
+            CLASSIFIED
+        </div>
 
-            <div class="small-label">
-                PERSONAL ARCHIVE
-            </div>
+        <div class="opening-content">
 
-            <div class="archive-number">
-                FILE 03
-            </div>
-
-            <div class="seal">
-                J
-            </div>
-
-            <p class="classified">
-                PRIVATE • CONFIDENTIAL • FOR JO ONLY
+            <p class="small-label">
+                VINTAGE EXPLORER ARCHIVE
             </p>
 
             <h1>
-                You have been<br>
-                <span>chosen.</span>
+                You Have Been Chosen.
             </h1>
 
-            <p class="invitation-text">
-                Jo, there is a place you have been selected
-                to visit.
+            <p class="opening-text">
+                Somewhere between coincidence,
+                memories, and places we never planned to find...
             </p>
 
-            <p class="mystery-text">
-                You weren't supposed to find this by accident.
-            </p>
+            <button id="beginBtn">
+                OPEN THE ARCHIVE
+            </button>
 
-            <button
-    class="main-button"
-    type="button"
-    onclick="openArchive();">
-    OPEN YOUR INVITATION
-</button>
         </div>
 
     </main>
 
 
-    <!-- ========================= -->
-    <!-- ARCHIVE -->
-    <!-- ========================= -->
+    <!-- =========================================
+         DAY 3 — ARCHIVE
+    ========================================== -->
 
     <main id="archive" class="screen">
 
         <header class="archive-header">
 
             <div>
-                <span class="small-label">
-                    PERSONAL ARCHIVE
-                </span>
-
-                <h2>
-                    THE JOURNEY OF JO
-                </h2>
+                <p class="small-label">ARCHIVE FILE</p>
+                <h2>DAY 03</h2>
             </div>
 
-            <div class="progress-box">
-                <span id="progressCount">0</span>/4
-                PIECES FOUND
+            <div class="archive-number">
+                FILE No. 003
             </div>
 
         </header>
 
 
-        <section class="intro-note">
+        <!-- INTRODUCTION -->
 
-            <p>
-                Four pieces of the archive have gone missing.
-            </p>
+        <section id="intro" class="archive-section">
 
-            <p>
-                They are hidden inside memories.
-            </p>
+            <div class="paper">
 
-            <strong>
-                Find them.
-            </strong>
+                <span class="document-label">
+                    CONFIDENTIAL
+                </span>
+
+                <h2>
+                    A Mysterious Invitation
+                </h2>
+
+                <p>
+                    You have been chosen to investigate
+                    something that has been hiding in plain sight.
+                </p>
+
+                <p>
+                    Four memories.
+                    Four letters.
+                    One discovery.
+                </p>
+
+                <button class="continue-btn" data-next="memoryA">
+                    BEGIN INVESTIGATION →
+                </button>
+
+            </div>
 
         </section>
 
 
-        <!-- CASES -->
+        <!-- =========================================
+             MEMORY A
+        ========================================== -->
 
-        <section class="cases">
+        <section id="memoryA" class="archive-section hidden">
 
-            <button class="case-card locked" id="caseA" onclick="openCase('A')">
+            <div class="paper">
 
-                <span class="case-number">
+                <span class="document-label">
                     ARCHIVE 001
                 </span>
 
-                <span class="case-letter">
-                    A
-                </span>
-
-                <span class="case-title">
+                <h2>
                     THE ORIGIN STORY
-                </span>
+                </h2>
 
-                <span class="case-status">
-                    INVESTIGATE
-                </span>
+                <p>
+                    Before all this,
+                    we were just two people who happened
+                    to know of each other.
+                </p>
 
-            </button>
+                <div class="memory-entry">
+
+                    <h3>GRADE 12</h3>
+
+                    <p>
+                        We finally started talking more.
+                    </p>
+
+                </div>
+
+                <div class="memory-entry">
+
+                    <h3>THE ENTRANCE EXAM</h3>
+
+                    <p>
+                        We ended up in the same dorm.
+                    </p>
+
+                </div>
+
+                <!-- JO SLEEPING IMAGE -->
+                <div class="memory-image">
+                    <img src="images/jo-sleeping.jpg"
+                         alt="Jo sleeping">
+                </div>
+
+                <div class="handwritten-note">
+                    "I started to like her because
+                    she slept like a baby."
+                </div>
+
+                <div class="memory-entry">
+
+                    <h3>SAME UNIVERSITY</h3>
+
+                    <p>
+                        And then somehow,
+                        we ended up at the same university.
+                    </p>
+
+                    <p>
+                        That's where everything really started.
+                    </p>
+
+                </div>
+<button class="continue-btn" data-next="memoryR">
+                    RECOVER NEXT MEMORY →
+                </button>
+
+            </div>
+
+        </section>
 
 
-            <button class="case-card locked" id="caseR" onclick="openCase('R')">
+        <!-- =========================================
+             MEMORY R
+        ========================================== -->
 
-                <span class="case-number">
+        <section id="memoryR" class="archive-section hidden">
+
+            <div class="paper">
+
+                <span class="document-label">
                     ARCHIVE 002
                 </span>
 
-                <span class="case-letter">
-                    R
-                </span>
+                <h2>
+                    THE JOURNEY
+                </h2>
 
-                <span class="case-title">
-                    THE RAINY SAMBUSA FILE
-                </span>
+                <p>
+                    Every investigation needs a journey.
+                    Ours was... slightly chaotic.
+                </p>
 
-                <span class="case-status">
-                    INVESTIGATE
-                </span>
+                <div class="journey-path">
 
-            </button>
+                    <div>QUOQOR</div>
+                    <span>↓</span>
+
+                    <div>UNISA</div>
+                    <span>↓</span>
+
+                    <div>NOWHERE</div>
+                    <span>↓</span>
+
+                    <div>SAMBUSA</div>
+                    <span>↓</span>
+
+                    <div>RAINY NIGHT</div>
+
+                </div>
+
+                <div class="memory-image">
+                    <img src="images/rainy-sambusa.jpg"
+                         alt="Rainy night and sambusa memory">
+                </div>
+
+                <button class="continue-btn" data-next="memoryS">
+                    RECOVER NEXT MEMORY →
+                </button>
+
+            </div>
+
+        </section>
 
 
-            <button class="case-card locked" id="caseS" onclick="openCase('S')">
+        <!-- =========================================
+             MEMORY S — JO
+        ========================================== -->
 
-                <span class="case-number">
+        <section id="memoryS" class="archive-section hidden">
+
+            <div class="paper">
+
+                <span class="document-label">
                     ARCHIVE 003
                 </span>
 
-                <span class="case-letter">
-                    S
-                </span>
+                <h2>
+                    THE SUBJECT
+                </h2>
 
-                <span class="case-title">
-                    THE MYSTERY OF JO
-                </span>
-              <span class="case-status">
-                    INVESTIGATE
-                </span>
+                <div class="memory-image">
+                    <img src="images/jo-profile.jpg"
+                         alt="Jo">
+                </div>
 
-            </button>
+                <p>
+                    Jo isn't just a name in this archive.
+                </p>
+
+                <p>
+                    She's someone with her own personality,
+                    interests, dreams, little obsessions,
+                    favorite things and beautiful ways
+                    of seeing the world.
+                </p>
+
+                <div class="interest-note">
+
+                    <p>✦ LILIES</p>
+                    <p>✦ FOOD</p>
+                    <p>✦ TRAVEL</p>
+                    <p>✦ VINTAGE THINGS</p>
+                    <p>✦ EVENTS</p>
+
+                </div>
+
+                <div class="memory-image small-image">
+                    <img src="images/lily.jpg"
+                         alt="Lily">
+                </div>
+
+                <button class="continue-btn" data-next="memoryU">
+                    RECOVER NEXT MEMORY →
+                </button>
+
+            </div>
+
+        </section>
 
 
-            <button class="case-card locked" id="caseU" onclick="openCase('U')">
+        <!-- =========================================
+             MEMORY U — APPRECIATION
+        ========================================== -->
 
-                <span class="case-number">
+        <section id="memoryU" class="archive-section hidden">
+
+            <div class="paper">
+
+                <span class="document-label">
                     ARCHIVE 004
                 </span>
 
-                <span class="case-letter">
-                    U
-                </span>
+                <h2>
+                    THE PERSON BEHIND IT ALL
+                </h2>
 
-                <span class="case-title">
-                    THE GIRL BEHIND THE FILE
-                </span>
+                <p>
+                    There are things that photographs
+                    can't properly explain.
+                </p>
 
-                <span class="case-status">
-                    INVESTIGATE
-                </span>
+                <p>
+                    The way someone makes ordinary moments
+                    feel special.
+                </p>
 
-            </button>
+                <p>
+                    The way their personality stays with you
+                    even after the moment is gone.
+                </p>
+
+                <p>
+                    And the way someone can be beautiful
+                    not only on the outside,
+                    but in everything they are.
+                </p>
+<div class="final-note">
+                    For all the little things,
+                    and all the things that aren't so little...
+                    I appreciate you more than you know.
+                </div>
+
+                <button class="continue-btn" data-next="arsuDiscovery">
+                    COMPLETE THE ARCHIVE →
+                </button>
+
+            </div>
 
         </section>
 
 
-        <!-- ARSU REVEAL -->
+        <!-- =========================================
+             ARSU DISCOVERY
+        ========================================== -->
 
-        <section id="arsuReveal" class="arsu-section hidden">
+        <section id="arsuDiscovery" class="archive-section hidden">
 
-            <div class="found-label">
-                FOUR PIECES RECOVERED
+            <div class="paper discovery">
+
+                <span class="document-label">
+                    FINAL DISCOVERY
+                </span>
+
+                <h2>
+                    FOUR MEMORIES.
+                </h2>
+
+                <p>
+                    Four archives have been recovered.
+                </p>
+
+                <div class="letters">
+
+                    <span>A</span>
+                    <span>R</span>
+                    <span>S</span>
+                    <span>U</span>
+
+                </div>
+
+                <p>
+                    Put the recovered letters together.
+                </p>
+
+                <button id="revealArsu">
+                    REVEAL THE DISCOVERY
+                </button>
+
             </div>
 
-            <div class="letters">
+        </section>
 
-                <div>A</div>
-                <div>R</div>
-                <div>S</div>
-                <div>U</div>
+
+        <!-- =========================================
+             ARSU REVEAL
+        ========================================== -->
+
+        <section id="arsuReveal" class="archive-section hidden">
+
+            <div class="paper reveal">
+
+                <span class="document-label">
+                    CLASSIFIED DISCOVERY
+                </span>
+
+                <h1 class="arsu-title">
+                    ARSU
+                </h1>
+
+                <div class="arsu-visual">
+                    <img src="images/arsulum.jpg"
+                         alt="ARSU discovery">
+                </div>
+
+                <p>
+                    The archive has been recovered.
+                </p>
+
+                <button id="openPassport">
+                    CONTINUE →
+                </button>
 
             </div>
 
-            <p>
-                Something is missing.
+        </section>
+
+
+        <!-- =========================================
+             PASSPORT
+        ========================================== -->
+
+        <section id="passportSection" class="archive-section hidden">
+
+            <div class="passport">
+
+                <div class="passport-header">
+                    <span>ARCHIVE PASSPORT</span>
+                    <span>03</span>
+                </div>
+
+                <div class="passport-body">
+
+                    <img src="images/passport.jpg"
+                         alt="Vintage passport">
+
+                    <div class="passport-info">
+
+                        <p>
+                            <strong>NAME</strong>
+                        </p>
+
+                        <h2>
+                            ARSU____
+                        </h2>
+
+                        <p>
+                            <strong>STATUS</strong>
+                        </p>
+
+                        <p>
+                            SELECTED
+                        </p>
+
+                        <p>
+                            <strong>DESTINATION</strong>
+                        </p>
+
+                        <p>
+                            UNKNOWN
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="passport-stamp">
+                    SELECTED
+                </div>
+
+            </div>
+
+            <p class="ending-text">
+                Some journeys are meant to be discovered
+                one day at a time.
             </p>
-
-            <p>
-                What do these letters mean?
-            </p>
-
-            <input
-                id="arsuInput"
-                type="text"
-                maxlength="4"
-                placeholder="ENTER FOUR LETTERS"
-            >
-
-            <button class="main-button" onclick="checkARSU()">
-                UNLOCK
-            </button>
-
-            <p id="arsuMessage"></p>
 
         </section>
 
     </main>
-
-
-    <!-- ========================= -->
-    <!-- PASSPORT -->
-    <!-- ========================= -->
-
-    <main id="passportScreen" class="screen">
-
-        <div class="passport">
-
-            <div class="passport-top">
-                PERSONAL TRAVEL DOCUMENT
-            </div>
-
-            <div class="passport-emblem">
-                ✦
-            </div>
-
-            <h2>
-                PASSPORT
-            </h2>
-
-            <div class="passport-line"></div>
-
-            <p>
-                HOLDER
-            </p>
-
-            <strong>
-                JO
-            </strong>
-
-            <p>
-                DESTINATION
-            </p>
-
-            <div class="destination">
-                ARSU____
-            </div>
-
-            <div class="passport-stamp">
-                SELECTED
-            </div>
-
-            <p class="passport-note">
-                Four letters recovered.<br>
-                Destination incomplete.
-            </p>
-
-            <button class="main-button" onclick="finishDay3()">
-                CONTINUE
-            </button>
-
-        </div>
-
-    </main>
-
-
-    <!-- ========================= -->
-    <!-- DAY 3 END -->
-    <!-- ========================= -->
-
-    <main id="ending" class="screen">
-
-        <div class="ending-card">
-
-            <div class="small-label">
-                ARCHIVE STATUS
-            </div>
-
-            <div class="big-stamp">
-                DAY III
-                <br>
-                COMPLETE
-            </div>
-
-            <h2>
-                The map is still unfinished.
-            </h2>
-
-            <p>
-                You found the first part of the destination.
-            </p>
-
-            <p class="handwritten">
-                Somewhere beyond the map...
-                a place is waiting.
-            </p>
-
-            <div class="end-line"></div>
-
-            <p class="return-text">
-                Return when the next chapter opens.
-            </p>
-
-        </div>
-
-    </main>
-
-
-    <!-- ========================= -->
-    <!-- CASE MODAL -->
-    <!-- ========================= -->
-
-    <div id="caseModal" class="modal">
-
-        <div class="modal-paper">
-
-            <button class="close-button" onclick="closeCase()">
-                ×
-            </button>
-
-            <div id="caseContent"></div>
-
-        </div>
-
-    </div>
 
 
     <script src="script.js"></script>
